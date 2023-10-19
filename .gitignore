@@ -1,0 +1,19 @@
+# Fastlane
+fastlane/report.xml
+
+# Xcode
+xcuserdata/
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+!*.xcodeproj/xcshareddata/
+!*.xcworkspace/contents.xcworkspacedata
+/*.gcno
+**/xcshareddata/WorkspaceSettings.xcsettings
+
+
+# MacOS Filesystem
+.DS_Store
+
+# Configs
+Client/Config/AppConfig.swift
+ClientUITests/TestsConfig.swift

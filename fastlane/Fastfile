@@ -1,0 +1,332 @@
+default_platform(:ios)
+
+platform :ios do
+  ios_staging_id = 'com.kanstantsin-bucha.examples.example-app.client.ios.staging'
+  ios_production_id = 'com.kanstantsin-bucha.examples.example-app.client.ios'
+  macos_production_id = 'com.kanstantsin-bucha.examples.example-app.client.macos'
+  git_user_name = 'kanstantsin-bucha'
+  git_user_email = 'kanstantsin.bucha@icloud.com'
+
+  desc "Deploy the App Store build to production TestFlight"
+  lane :client_deploy_production_app_store do
+    setup_ci
+    match(
+        type: "appstore",
+        readonly: true,
+        app_identifier: [ENV['APP_ID'],ENV['APP_ID'] + ".NotificationServiceExtension"]
+    )
+    build_app(scheme: "ClientProductionAppStore")
+    api_key = app_store_connect_api_key(
+      key_id: ENV['APPLE_API_KEY_ID'],
+      issuer_id: ENV['APPLE_API_KEY_ISSUER_ID'],
+      key_content: ENV['APPLE_API_KEY_P8'],
+      is_key_content_base64: false,
+      duration: 1200,
+      in_house: false
+    )
+    upload_to_testflight(api_key: api_key)
+    sentry_upload_dif(
+      auth_token: ENV['SENTRY_TOKEN'],
+      org_slug: 'kanstantsin-bucha',
+      project_slug: 'example-app-client-ios-production',
+      include_sources: true
+    )   
+  end
+
+  desc "Deploy TestFlight Beta build to production TestFlight"
+  lane :client_deploy_production_testflight_beta do
+    setup_ci
+    increment_build_number(build_number: "55555")
+    match(
+        type: "appstore",
+        readonly: true,
+        app_identifier: [ENV['APP_ID'],ENV['APP_ID'] + ".NotificationServiceExtension"]
+    )
+    build_app(scheme: "ClientProduction")
+    api_key = app_store_connect_api_key(
+      key_id: ENV['APPLE_API_KEY_ID'],
+      issuer_id: ENV['APPLE_API_KEY_ISSUER_ID'],
+      key_content: ENV['APPLE_API_KEY_P8'],
+      is_key_content_base64: false,
+      duration: 1200,
+      in_house: false
+    )
+    upload_to_testflight(api_key: api_key)
+    sentry_upload_dif(
+      auth_token: ENV['SENTRY_TOKEN'],
+      org_slug: 'kanstantsin-bucha',
+      project_slug: 'example-app-client-ios-production',
+      include_sources: true
+    )   
+  end
+
+  desc "Deploy the Test Flight Beta build to staging TestFlight"
+  lane :client_deploy_staging_test_flight_beta do
+    setup_ci
+    version_increment_patch
+    version = lane_context[:project_version]
+    git_setup_user
+    git_commit_push(message: "New version #{version} prepared for the staging Test Flight")
+    git_tag_push(tag: version)
+    match(
+        type: "appstore",
+        readonly: true,
+        app_identifier: [ENV['APP_ID'],ENV['APP_ID'] + ".NotificationServiceExtension"]
+    )
+    build_app(scheme: "ClientStaging")
+    api_key = app_store_connect_api_key(
+      key_id: ENV['APPLE_API_KEY_ID'],
+      issuer_id: ENV['APPLE_API_KEY_ISSUER_ID'],
+      key_content: ENV['APPLE_API_KEY_P8'],
+      is_key_content_base64: false,
+      duration: 1200,
+      in_house: false
+    )
+    upload_to_testflight(api_key: api_key)
+    sentry_upload_dif(
+      auth_token: ENV['SENTRY_TOKEN'],
+      org_slug: 'kanstantsin-bucha',
+      project_slug: 'example-app-client-ios-staging',
+      include_sources: true
+    )    
+  end
+
+  desc "Deploy the Desktop build to production TestFlight"
+  lane :desktop_deploy_production do
+    setup_ci
+    match(
+      type: "appstore", 
+      app_identifier: ENV["APP_ID"],
+      additional_cert_types: ["mac_installer_distribution"],
+      platform: "macos",
+      readonly: true
+    )
+    build_mac_app(
+      scheme: "DesktopProduction",
+      installer_cert_name: "3rd Party Mac Developer Installer: KANSTANTSIN BUCHA (J6252NJ42R)"
+    )
+    api_key = app_store_connect_api_key(
+      key_id: ENV['APPLE_API_KEY_ID'],
+      issuer_id: ENV['APPLE_API_KEY_ISSUER_ID'],
+      key_content: ENV['APPLE_API_KEY_P8'],
+      is_key_content_base64: false,
+      duration: 1200,
+      in_house: false
+    )
+    upload_to_testflight(api_key: api_key)
+    sentry_upload_dif(
+      auth_token: ENV['SENTRY_TOKEN'],
+      org_slug: 'kanstantsin-bucha',
+      project_slug: 'example-app-client-macos-production',
+      include_sources: true
+    )
+  end
+
+  desc "Run Unit Tests using Fastlane"
+  lane :run_unit_tests do
+    setup_ci
+    match(type: "development", readonly: true)
+    run_tests(
+      scheme: "ClientStaging",
+      prelaunch_simulator: true,
+      result_bundle: true,
+      code_coverage: true,
+      output_directory: "reports/",
+      output_types: "html,junit"
+    )
+  end
+
+  desc "Load provision profiles for iOS staging"
+  lane :load_provision_profiles_ios_staging do
+    identifiers = [ios_staging_id, ios_staging_id + '.NotificationServiceExtension']
+    match(
+        type: "appstore",
+        include_all_certificates: true,
+        readonly: true,
+        app_identifier: identifiers,
+        verbose: true
+    )
+    # identifiers << ios_staging_id + '.ClientUITests'
+    match(
+        type: "development",
+        include_all_certificates: true,
+        readonly: true,
+        app_identifier: identifiers,
+        verbose: true
+    )
+  end
+
+  desc "Load provision profiles for iOS production"
+  lane :load_provision_profiles_ios_production do
+    identifiers = [ios_production_id, ios_production_id + '.NotificationServiceExtension']
+        type: "appstore",
+        include_all_certificates: true,
+        readonly: true,
+        app_identifier: identifiers,
+        verbose: true
+    )
+    match(
+        type: "development",
+        include_all_certificates: true,
+        readonly: true,
+        app_identifier: identifiers,
+        verbose: true
+    )
+  end
+
+  desc "Create provision profiles for iOS staging"
+  lane :create_provision_profiles_ios_staging do
+    login_another_user
+    user_name = lane_context[:user_name]
+    identifiers = [ios_staging_id, ios_staging_id + '.NotificationServiceExtension']
+    match(
+        type: "appstore",
+        username: user_name,
+        include_all_certificates: true,
+        readonly: false,
+        app_identifier: identifiers,
+        verbose: true
+    )
+    # identifiers << ios_staging_id + '.ClientUITests'
+    match(
+        type: "development",
+        username: user_name,
+        include_all_certificates: true,
+        readonly: false,
+        app_identifier: identifiers,
+        verbose: true
+    )
+  end
+
+  desc "Create provision profiles for iOS production"
+  lane :create_provision_profiles_ios_production do
+    login_another_user
+    user_name = lane_context[:user_name]
+    identifiers = [ios_production_id, ios_production_id + '.NotificationServiceExtension']
+    match(
+        type: "appstore",
+        username: user_name,
+        include_all_certificates: true,
+        readonly: false,
+        app_identifier: identifiers,
+        verbose: true
+    )
+    match(
+        type: "development",
+        username: user_name,
+        include_all_certificates: true,
+        readonly: false,
+        app_identifier: identifiers,
+        verbose: true
+    )
+  end
+
+  desc "Login another User to Apple ID"
+  lane :login_another_user do
+    user_name = UI.input("Enter your Apple id:")
+    ENV["FASTLANE_USER"] = user_name
+    ENV["FASTLANE_PASSWORD"] = UI.password("Enter your password:")
+    lane_context[:user_name] = user_name
+  end
+
+  desc "Setup Git User"
+  lane :git_setup_user do |options|
+    sh("git config --global user.name '" + git_user_name + "'")
+    sh("git config --global user.email '" + git_user_email + "'")
+  end
+
+  desc "Git Commit & Push"
+  lane :git_commit_push do |options|
+    sh("git commit -am '#{options[:message]}'")
+    sh("git push")
+  end
+
+  desc "Create Tag & Push"
+  lane :git_tag_push do |options|
+    tag = options[:tag] 
+    sh("git tag '#{tag}'")
+    sh("git push origin #{tag}")
+  end
+
+  desc "Increment Patch Version"
+  lane :version_increment_patch do 
+    project_file = "./../Client.xcodeproj/project.pbxproj"
+    marketing_version_tag = "MARKETING_VERSION"
+    # Get the current version from the project file
+    ### Get all version strings
+    version_expression_lines_string = `cat #{project_file} | grep #{marketing_version_tag}`
+    version_expression_lines = version_expression_lines_string.split(/\n/)
+    version = ""
+    version_expression = ""
+    ### Look for the first one with the vesion assigned
+    ### Not the MARKETING_VERSION = "$(MARKETING_VERSION)";
+    for line in version_expression_lines
+      current_version_expression = line.strip
+      ### If the version is like this: MARKETING_VERSION = 0.1.1;
+      if version_match = current_version_expression.match(/#{marketing_version_tag} = ([\d.]+)/)
+        version = version_match[1]
+        version_expression = current_version_expression;
+        break
+      end  
+    end
+    if version == ""
+      # Search failed, raise an exception to fail the lane
+      UI.user_error!("Failed to find a version in the #{project_file}")
+      return
+    end
+    puts "We found the version: " + version
+
+    # Get the next version
+    ### Split the version string into individual components
+    components = version.split(".")
+
+    ### Convert the last component to an integer, increment it, and convert it back to a string
+    last_component = components.last.to_i
+    new_last_component = last_component + 1
+    components[-1] = new_last_component.to_s
+
+    ### Join the components back into a version string
+    next_version = components.join(".")
+
+    puts "We prepared the next version: " + next_version
+
+    # Update the project file 
+    ### Prepare the replacement for the version expression
+    ### MARKETING_VERSION = 0.1.2;
+    next_version_expression = current_version_expression.sub(/\d+\.\d+\.\d+/, next_version)
+
+    file_contents = File.read(project_file)
+    ### Replace all occurrences of string1 with string2
+    updated_contents = file_contents.gsub(current_version_expression, next_version_expression)
+
+    if file_contents == updated_contents
+      # Update failed, raise an exception to fail the lane
+      UI.user_error!("Failed to update the version in the #{project_file}")
+      return
+    end
+
+    ### Write the updated contents back to the file
+    File.write(project_file, updated_contents)
+
+    puts "We patch the project file with version expression: '" + next_version_expression + "'"
+
+    lane_context[:project_version] = next_version
+    puts "finished"
+  end
+end
+
+platform :mac do
+  desc "Create provision profiles for MacOS production"
+  lane :create_provision_profiles_mac_production do
+    login_another_user
+    user_name = lane_context[:user_name]
+    match(
+      type: "appstore",
+      username: user_name,
+      additional_cert_types: 'mac_installer_distribution',
+      readonly: false,
+      app_identifier: macos_production_id
+    )
+  end
+end
+

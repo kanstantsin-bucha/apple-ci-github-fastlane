@@ -1,0 +1,13 @@
+xcassets:
+  inputs:
+    - Client/Resources/Assets.xcassets
+  outputs:
+    - templatePath: SwiftGen/swiftui-xcassets.stencil
+      output: Client/Generated/AppAssets.swift
+fonts:
+  inputs:
+    - Client/Fonts/Test.ttf
+  outputs:
+    - templatePath: SwiftGen/swiftui-fonts.stencil
+      output: Client/Generated/AppFonts.swift
+    

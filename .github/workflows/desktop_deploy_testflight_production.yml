@@ -1,0 +1,41 @@
+name: desktop_deploy_production
+on:
+  workflow_run:
+    workflows: [run_tests]
+    branches: [develop]
+    types:
+      - completed
+
+jobs:
+  test:
+    name: Deploy the Desktop build to production TestFlight
+    runs-on: macOS-13
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    environment: desktop_build
+    timeout-minutes: 30
+    steps:
+      - name: Select xCode
+        run: sudo xcode-select -s /Applications/Xcode_14.3.1.app
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Install gems
+        run: bundle install
+      - name: Write application config
+        run: ./Scripts/CreateAppConfigFromEnvDesktop.swift
+        env:
+          SENTRY_DSN: ${{ secrets.SENTRY_DSN_DESKTOP_PRODUCTION }}
+      - name: Deploy the Desktop build to production TestFlight
+        run: bundle exec fastlane desktop_deploy_production
+        env:
+          APPLE_ID: ${{ secrets.APPLE_ID }}
+          APPLE_API_KEY_ID: ${{ secrets.APPLE_API_KEY_ID }}
+          APPLE_API_KEY_ISSUER_ID: ${{ secrets.APPLE_API_KEY_ISSUER_ID }}
+          APPLE_API_KEY_P8: ${{ secrets.APPLE_API_KEY_P8 }}
+          FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
+          MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+          MATCH_GIT_PRIVATE_KEY: ${{ secrets.MATCH_GIT_PRIVATE_KEY }}
+          SENTRY_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          ITUNES_CONNECT_TEAM_ID: ${{ secrets.ITUNES_CONNECT_TEAM_ID }}
+          TEAM_ID: ${{ secrets.TEAM_ID }}
+          APP_ID: ${{ vars.APP_ID }}
+          MATCH_GIT_URL: ${{ vars.MATCH_GIT_URL }}

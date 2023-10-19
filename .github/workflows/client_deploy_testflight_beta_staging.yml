@@ -1,0 +1,58 @@
+name: client_deploy_testflight_beta_staging
+on:
+  workflow_run:
+    workflows: [run_tests]
+    branches: [develop]
+    types:
+      - completed
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: true
+  
+jobs:
+  test:
+    name: Deploy TestFlight Beta build to staging TestFlight
+    runs-on: macOS-13
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    timeout-minutes: 30
+    steps:
+      - name: Select xCode
+        run: sudo xcode-select -s /Applications/Xcode_14.3.1.app
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Install gems
+        run: bundle install
+      # - name: Snyk: Install
+      #   run: brew tap snyk/tap && brew install snyk
+      # - name: Snyk: test of dependencies
+      #   run: snyk -d test --file=./AppThirdPartyPackage/Package.swift
+      #   env:
+      #     SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+      - name: Write application config
+        run: ./Scripts/CreateAppConfigFromEnv.swift
+        env:
+          COGNITO_CLIENT_ID: ${{ secrets.COGNITO_CLIENT_ID_STAGING }}
+          COGNITO_POOL_ID: ${{ secrets.COGNITO_POOL_ID_STAGING }}
+          COGNITO_REGION_ID: ${{ secrets.COGNITO_REGION_ID_STAGING }}
+          SENTRY_DSN: ${{ secrets.SENTRY_DSN_STAGING }}
+          MIXPANEL_TOKEN: ${{ secrets.MIXPANEL_TOKEN_STAGING }}
+          REVENUE_CAT_KEY: ${{ secrets.REVENUE_CAT_KEY_STAGING }}
+          ONESIGNAL_APP_ID: ${{ secrets.ONE_SIGNAL_APP_ID_STAGING }}
+          APPSFLYER_DEV_KEY: ${{ secrets.APPSFLYER_DEV_KEY_STAGING }}
+          APPLE_APP_ID: ${{ secrets.APPLE_APP_ID_STAGING }}
+      - name: Deploy the Test Flight Beta build to staging TestFlight
+        run: bundle exec fastlane client_deploy_staging_test_flight_beta
+        env:
+          APPLE_ID: ${{ secrets.APPLE_ID }}
+          APPLE_API_KEY_ID: ${{ secrets.APPLE_API_KEY_ID }}
+          APPLE_API_KEY_ISSUER_ID: ${{ secrets.APPLE_API_KEY_ISSUER_ID }}
+          APPLE_API_KEY_P8: ${{ secrets.APPLE_API_KEY_P8 }}
+          FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
+          MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+          MATCH_GIT_PRIVATE_KEY: ${{ secrets.MATCH_GIT_PRIVATE_KEY }}
+          SENTRY_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          ITUNES_CONNECT_TEAM_ID: ${{ secrets.ITUNES_CONNECT_TEAM_ID }}
+          TEAM_ID: ${{ secrets.TEAM_ID }}
+          APP_ID: ${{ vars.APP_ID }}
+          MATCH_GIT_URL: ${{ vars.MATCH_GIT_URL }}

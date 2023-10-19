@@ -1,0 +1,5 @@
+storage_mode("git")
+git_url(ENV['MATCH_GIT_URL'])
+git_branch("main")
+type("appstore")
+username(ENV['APPLE_ID'])

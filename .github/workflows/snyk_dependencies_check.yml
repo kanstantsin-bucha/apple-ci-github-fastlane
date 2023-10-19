@@ -1,0 +1,32 @@
+name: snyk_dependencies_check
+on:
+  workflow_dispatch:
+  # schedule:
+  #   - cron: "30 19 * * *"
+  pull_request:
+    branches: ['main']
+    
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: true
+  
+jobs:
+  security:
+    name: Snyk run dependencies check in command line
+    runs-on: macOS-13
+    timeout-minutes: 30
+    steps:
+      - name: Select xCode
+        run: sudo xcode-select -s /Applications/Xcode_14.3.1.app
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Install Snyk
+        run: brew tap snyk/tap && brew install snyk
+      # - name: Snyk test of project
+      #   run: snyk -d code test --report --org=kanstantsin-bucha --project-name=example-app-client
+      #   env:
+      #     SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+      - name: Snyk monitor of dependencies
+        run: snyk -d monitor --org=kanstantsin-bucha --project-name=example-app-client --file=./AppThirdPartyPackage/Package.swift
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}

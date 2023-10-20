@@ -14,13 +14,13 @@
 		FE1E6CEB2AE2AA6600C10AC3 /* ClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1E6CEA2AE2AA6600C10AC3 /* ClientTests.swift */; };
 		FE1E6CF52AE2AA6600C10AC3 /* ClientUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1E6CF42AE2AA6600C10AC3 /* ClientUITests.swift */; };
 		FE1E6CF72AE2AA6600C10AC3 /* ClientUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1E6CF62AE2AA6600C10AC3 /* ClientUITestsLaunchTests.swift */; };
-		FECC6FE42AE2AC0A00EAFAE7 /* AppThirdPartyPackage in Frameworks */ = {isa = PBXBuildFile; productRef = FECC6FE32AE2AC0A00EAFAE7 /* AppThirdPartyPackage */; };
+		FE9F877F2AE2B4DE0006B722 /* ClientThirdPartyLib in Frameworks */ = {isa = PBXBuildFile; productRef = FE9F877E2AE2B4DE0006B722 /* ClientThirdPartyLib */; };
+		FE9F87812AE2B4E70006B722 /* TestsThirdPartyLib in Frameworks */ = {isa = PBXBuildFile; productRef = FE9F87802AE2B4E70006B722 /* TestsThirdPartyLib */; };
+		FE9F87832AE2B4F20006B722 /* DesktopThirdPartyLib in Frameworks */ = {isa = PBXBuildFile; productRef = FE9F87822AE2B4F20006B722 /* DesktopThirdPartyLib */; };
 		FECC6FEC2AE2AC4600EAFAE7 /* DesktopApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FECC6FEB2AE2AC4600EAFAE7 /* DesktopApp.swift */; };
 		FECC6FEE2AE2AC4600EAFAE7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FECC6FED2AE2AC4600EAFAE7 /* ContentView.swift */; };
 		FECC6FF02AE2AC4600EAFAE7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FECC6FEF2AE2AC4600EAFAE7 /* Assets.xcassets */; };
 		FECC6FF32AE2AC4600EAFAE7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FECC6FF22AE2AC4600EAFAE7 /* Preview Assets.xcassets */; };
-		FECC6FF92AE2ACF800EAFAE7 /* TestsThirdPartyPackage in Frameworks */ = {isa = PBXBuildFile; productRef = FECC6FF82AE2ACF800EAFAE7 /* TestsThirdPartyPackage */; };
-		FECC6FFB2AE2AD0000EAFAE7 /* DesktopThirdPartyPackage in Frameworks */ = {isa = PBXBuildFile; productRef = FECC6FFA2AE2AD0000EAFAE7 /* DesktopThirdPartyPackage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,7 +52,7 @@
 		FE1E6CF02AE2AA6600C10AC3 /* ClientUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClientUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE1E6CF42AE2AA6600C10AC3 /* ClientUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientUITests.swift; sourceTree = "<group>"; };
 		FE1E6CF62AE2AA6600C10AC3 /* ClientUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		FECC6FE12AE2AAD300EAFAE7 /* AppThirdPartyPackage */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = AppThirdPartyPackage; sourceTree = "<group>"; };
+		FE9F877D2AE2B49F0006B722 /* ClientPackage */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = ClientPackage; sourceTree = "<group>"; };
 		FECC6FE92AE2AC4500EAFAE7 /* Desktop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Desktop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FECC6FEB2AE2AC4600EAFAE7 /* DesktopApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopApp.swift; sourceTree = "<group>"; };
 		FECC6FED2AE2AC4600EAFAE7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -66,7 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FECC6FE42AE2AC0A00EAFAE7 /* AppThirdPartyPackage in Frameworks */,
+				FE9F877F2AE2B4DE0006B722 /* ClientThirdPartyLib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,7 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FECC6FF92AE2ACF800EAFAE7 /* TestsThirdPartyPackage in Frameworks */,
+				FE9F87812AE2B4E70006B722 /* TestsThirdPartyLib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,7 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FECC6FFB2AE2AD0000EAFAE7 /* DesktopThirdPartyPackage in Frameworks */,
+				FE9F87832AE2B4F20006B722 /* DesktopThirdPartyLib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,7 +99,7 @@
 		FE1E6CCC2AE2AA6500C10AC3 = {
 			isa = PBXGroup;
 			children = (
-				FECC6FE12AE2AAD300EAFAE7 /* AppThirdPartyPackage */,
+				FE9F877D2AE2B49F0006B722 /* ClientPackage */,
 				FE1E6CD72AE2AA6500C10AC3 /* Client */,
 				FE1E6CE92AE2AA6600C10AC3 /* ClientTests */,
 				FE1E6CF32AE2AA6600C10AC3 /* ClientUITests */,
@@ -201,7 +201,7 @@
 			);
 			name = Client;
 			packageProductDependencies = (
-				FECC6FE32AE2AC0A00EAFAE7 /* AppThirdPartyPackage */,
+				FE9F877E2AE2B4DE0006B722 /* ClientThirdPartyLib */,
 			);
 			productName = Client;
 			productReference = FE1E6CD52AE2AA6500C10AC3 /* Client.app */;
@@ -222,7 +222,7 @@
 			);
 			name = ClientTests;
 			packageProductDependencies = (
-				FECC6FF82AE2ACF800EAFAE7 /* TestsThirdPartyPackage */,
+				FE9F87802AE2B4E70006B722 /* TestsThirdPartyLib */,
 			);
 			productName = ClientTests;
 			productReference = FE1E6CE62AE2AA6600C10AC3 /* ClientTests.xctest */;
@@ -260,7 +260,7 @@
 			);
 			name = Desktop;
 			packageProductDependencies = (
-				FECC6FFA2AE2AD0000EAFAE7 /* DesktopThirdPartyPackage */,
+				FE9F87822AE2B4F20006B722 /* DesktopThirdPartyLib */,
 			);
 			productName = Desktop;
 			productReference = FECC6FE92AE2AC4500EAFAE7 /* Desktop.app */;
@@ -797,17 +797,17 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		FECC6FE32AE2AC0A00EAFAE7 /* AppThirdPartyPackage */ = {
+		FE9F877E2AE2B4DE0006B722 /* ClientThirdPartyLib */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = AppThirdPartyPackage;
+			productName = ClientThirdPartyLib;
 		};
-		FECC6FF82AE2ACF800EAFAE7 /* TestsThirdPartyPackage */ = {
+		FE9F87802AE2B4E70006B722 /* TestsThirdPartyLib */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = TestsThirdPartyPackage;
+			productName = TestsThirdPartyLib;
 		};
-		FECC6FFA2AE2AD0000EAFAE7 /* DesktopThirdPartyPackage */ = {
+		FE9F87822AE2B4F20006B722 /* DesktopThirdPartyLib */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = DesktopThirdPartyPackage;
+			productName = DesktopThirdPartyLib;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

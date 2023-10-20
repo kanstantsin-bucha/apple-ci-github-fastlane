@@ -4,22 +4,22 @@
 import PackageDescription
 
 let package = Package(
-    name: "AppThirdPartyPackage",
+    name: "ClientPackage",
     platforms: [ .iOS(.v15), .macOS(.v12) ],
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
-            name: "AppThirdPartyPackage",
-            targets: ["AppThirdPartyPackage"]),
+            name: "ClientThirdPartyLib",
+            targets: ["ClientThirdPartyTarget"]),
         .library(
-            name: "ExtensionThirdPartyPackage",
-            targets: ["ExtensionThirdPartyPackage"]),
+            name: "ExtensionThirdPartyLib",
+            targets: ["ExtensionThirdPartyTarget"]),
         .library(
-            name: "DesktopThirdPartyPackage",
-            targets: ["DesktopThirdPartyPackage"]),
+            name: "DesktopThirdPartyLib",
+            targets: ["DesktopThirdPartyTarget"]),
         .library(
-            name: "TestsThirdPartyPackage",
-            targets: ["TestsThirdPartyPackage"])
+            name: "TestsThirdPartyLib",
+            targets: ["TestsThirdPartyTarget"])
     ],
     dependencies: [
         .package(url: "https://github.com/johnpatrickmorgan/NavigationBackport", from: "0.9.0"),
@@ -40,7 +40,7 @@ let package = Package(
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "AppThirdPartyPackage",
+            name: "ClientThirdPartyTarget",
             dependencies: [
                 "NavigationBackport",
                 .productItem(name: "Sentry", package: "sentry-cocoa", moduleAliases: nil, condition: nil),
@@ -58,19 +58,19 @@ let package = Package(
             ]
         ),
         .target(
-            name: "ExtensionThirdPartyPackage",
+            name: "ExtensionThirdPartyTarget",
             dependencies: [
                 .productItem(name: "OneSignalExtension", package: "OneSignal-iOS-SDK", moduleAliases: nil, condition: nil)
             ]
         ),
         .target(
-            name: "DesktopThirdPartyPackage",
+            name: "DesktopThirdPartyTarget",
             dependencies: [
                 .productItem(name: "Sentry", package: "sentry-cocoa", moduleAliases: nil, condition: nil)
             ]
         ),
         .target(
-            name: "TestsThirdPartyPackage",
+            name: "TestsThirdPartyTarget",
             dependencies: [
                 "Quick",
                 "Nimble"

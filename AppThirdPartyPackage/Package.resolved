@@ -1,0 +1,140 @@
+{
+  "pins" : [
+    {
+      "identity" : "appsflyerframework",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/AppsFlyerSDK/AppsFlyerFramework",
+      "state" : {
+        "revision" : "0d8359239a349db4ac2aba8efe2ad8835fc799b5",
+        "version" : "6.12.2"
+      }
+    },
+    {
+      "identity" : "aws-sdk-ios-spm",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/aws-amplify/aws-sdk-ios-spm",
+      "state" : {
+        "revision" : "ca31418963a90bac80538e13f6b7af87ea14d279",
+        "version" : "2.33.4"
+      }
+    },
+    {
+      "identity" : "cwlcatchexception",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/mattgallagher/CwlCatchException.git",
+      "state" : {
+        "revision" : "3b123999de19bf04905bc1dfdb76f817b0f2cc00",
+        "version" : "2.1.2"
+      }
+    },
+    {
+      "identity" : "cwlpreconditiontesting",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/mattgallagher/CwlPreconditionTesting.git",
+      "state" : {
+        "revision" : "a23ded2c91df9156628a6996ab4f347526f17b6b",
+        "version" : "2.1.2"
+      }
+    },
+    {
+      "identity" : "jwtdecode.swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/auth0/JWTDecode.swift",
+      "state" : {
+        "revision" : "58af7278797871e460d79496621b3e5366b865b2",
+        "version" : "3.1.0"
+      }
+    },
+    {
+      "identity" : "keychain-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/srgtuszy/keychain-swift",
+      "state" : {
+        "branch" : "master",
+        "revision" : "ceb87037a425898d23776270e6afc949d6bc9c39"
+      }
+    },
+    {
+      "identity" : "marqueetext",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/joekndy/MarqueeText",
+      "state" : {
+        "branch" : "master",
+        "revision" : "e18d514455563ad00581e0d825146c6f15b1c6c4"
+      }
+    },
+    {
+      "identity" : "mixpanel-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/mixpanel/mixpanel-swift",
+      "state" : {
+        "revision" : "8ce81c8ed451d8aa5ede028e3838fd41e67938c9",
+        "version" : "4.1.4"
+      }
+    },
+    {
+      "identity" : "navigationbackport",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/johnpatrickmorgan/NavigationBackport",
+      "state" : {
+        "revision" : "fb860a404f8c0aabeca1016400e41ece5363a369",
+        "version" : "0.9.0"
+      }
+    },
+    {
+      "identity" : "nimble",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Quick/Nimble",
+      "state" : {
+        "revision" : "edaedc1ec86f14ac6e2ca495b94f0ff7150d98d0",
+        "version" : "12.3.0"
+      }
+    },
+    {
+      "identity" : "onesignal-ios-sdk",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/OneSignal/OneSignal-iOS-SDK",
+      "state" : {
+        "revision" : "00a9990a85df435957a3d32108c87f8dfd312aa9",
+        "version" : "5.0.2"
+      }
+    },
+    {
+      "identity" : "purchases-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/RevenueCat/purchases-ios",
+      "state" : {
+        "revision" : "d50a261eeb8a635c5927670f223971e13a34a926",
+        "version" : "4.28.1"
+      }
+    },
+    {
+      "identity" : "quick",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Quick/Quick",
+      "state" : {
+        "revision" : "ef9aaf3f634b3a1ab6f54f1173fe2400b36e7cb8",
+        "version" : "7.3.0"
+      }
+    },
+    {
+      "identity" : "sentry-cocoa",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/getsentry/sentry-cocoa",
+      "state" : {
+        "revision" : "2889f06002ef4f4cb3ec983da42a706e1d0124e5",
+        "version" : "8.14.1"
+      }
+    },
+    {
+      "identity" : "swiftui-introspect",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/siteline/swiftui-introspect",
+      "state" : {
+        "revision" : "3ced72fccb284235c266c1e8a32f1bf93129fc74",
+        "version" : "1.1.0"
+      }
+    }
+  ],
+  "version" : 2
+}

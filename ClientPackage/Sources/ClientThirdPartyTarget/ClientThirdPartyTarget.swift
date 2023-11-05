@@ -3,7 +3,6 @@ import Sentry
 import RevenueCat
 import JWTDecode
 import KeychainSwift
-import MarqueeText
 import SwiftUIIntrospect
 import Mixpanel
 import OneSignalFramework

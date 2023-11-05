@@ -17,6 +17,9 @@
 		FE9F877F2AE2B4DE0006B722 /* ClientThirdPartyLib in Frameworks */ = {isa = PBXBuildFile; productRef = FE9F877E2AE2B4DE0006B722 /* ClientThirdPartyLib */; };
 		FE9F87812AE2B4E70006B722 /* TestsThirdPartyLib in Frameworks */ = {isa = PBXBuildFile; productRef = FE9F87802AE2B4E70006B722 /* TestsThirdPartyLib */; };
 		FE9F87832AE2B4F20006B722 /* DesktopThirdPartyLib in Frameworks */ = {isa = PBXBuildFile; productRef = FE9F87822AE2B4F20006B722 /* DesktopThirdPartyLib */; };
+		FEA1283A2AF7FFF400272CC1 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA128392AF7FFF400272CC1 /* NotificationService.swift */; };
+		FEA1283E2AF7FFF400272CC1 /* ClientNotificationsExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = FEA128372AF7FFF400272CC1 /* ClientNotificationsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		FEA128442AF8006800272CC1 /* ExtensionThirdPartyLib in Frameworks */ = {isa = PBXBuildFile; productRef = FEA128432AF8006800272CC1 /* ExtensionThirdPartyLib */; };
 		FECC6FEC2AE2AC4600EAFAE7 /* DesktopApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FECC6FEB2AE2AC4600EAFAE7 /* DesktopApp.swift */; };
 		FECC6FEE2AE2AC4600EAFAE7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FECC6FED2AE2AC4600EAFAE7 /* ContentView.swift */; };
 		FECC6FF02AE2AC4600EAFAE7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FECC6FEF2AE2AC4600EAFAE7 /* Assets.xcassets */; };
@@ -38,7 +41,28 @@
 			remoteGlobalIDString = FE1E6CD42AE2AA6500C10AC3;
 			remoteInfo = Client;
 		};
+		FEA1283C2AF7FFF400272CC1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FE1E6CCD2AE2AA6500C10AC3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FEA128362AF7FFF400272CC1;
+			remoteInfo = ClientNotificationsExtension;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		FEA1283F2AF7FFF400272CC1 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				FEA1283E2AF7FFF400272CC1 /* ClientNotificationsExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		FE1E6CD52AE2AA6500C10AC3 /* Client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Client.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -53,6 +77,9 @@
 		FE1E6CF42AE2AA6600C10AC3 /* ClientUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientUITests.swift; sourceTree = "<group>"; };
 		FE1E6CF62AE2AA6600C10AC3 /* ClientUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		FE9F877D2AE2B49F0006B722 /* ClientPackage */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = ClientPackage; sourceTree = "<group>"; };
+		FEA128372AF7FFF400272CC1 /* ClientNotificationsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ClientNotificationsExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		FEA128392AF7FFF400272CC1 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		FEA1283B2AF7FFF400272CC1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FECC6FE92AE2AC4500EAFAE7 /* Desktop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Desktop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FECC6FEB2AE2AC4600EAFAE7 /* DesktopApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopApp.swift; sourceTree = "<group>"; };
 		FECC6FED2AE2AC4600EAFAE7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -85,6 +112,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FEA128342AF7FFF400272CC1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FEA128442AF8006800272CC1 /* ExtensionThirdPartyLib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FECC6FE62AE2AC4500EAFAE7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -104,6 +139,7 @@
 				FE1E6CE92AE2AA6600C10AC3 /* ClientTests */,
 				FE1E6CF32AE2AA6600C10AC3 /* ClientUITests */,
 				FECC6FEA2AE2AC4600EAFAE7 /* Desktop */,
+				FEA128382AF7FFF400272CC1 /* ClientNotificationsExtension */,
 				FE1E6CD62AE2AA6500C10AC3 /* Products */,
 				FECC6FE22AE2AC0A00EAFAE7 /* Frameworks */,
 			);
@@ -116,6 +152,7 @@
 				FE1E6CE62AE2AA6600C10AC3 /* ClientTests.xctest */,
 				FE1E6CF02AE2AA6600C10AC3 /* ClientUITests.xctest */,
 				FECC6FE92AE2AC4500EAFAE7 /* Desktop.app */,
+				FEA128372AF7FFF400272CC1 /* ClientNotificationsExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -157,6 +194,15 @@
 			path = ClientUITests;
 			sourceTree = "<group>";
 		};
+		FEA128382AF7FFF400272CC1 /* ClientNotificationsExtension */ = {
+			isa = PBXGroup;
+			children = (
+				FEA128392AF7FFF400272CC1 /* NotificationService.swift */,
+				FEA1283B2AF7FFF400272CC1 /* Info.plist */,
+			);
+			path = ClientNotificationsExtension;
+			sourceTree = "<group>";
+		};
 		FECC6FE22AE2AC0A00EAFAE7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -194,10 +240,12 @@
 				FE1E6CD12AE2AA6500C10AC3 /* Sources */,
 				FE1E6CD22AE2AA6500C10AC3 /* Frameworks */,
 				FE1E6CD32AE2AA6500C10AC3 /* Resources */,
+				FEA1283F2AF7FFF400272CC1 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				FEA1283D2AF7FFF400272CC1 /* PBXTargetDependency */,
 			);
 			name = Client;
 			packageProductDependencies = (
@@ -246,6 +294,26 @@
 			productReference = FE1E6CF02AE2AA6600C10AC3 /* ClientUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		FEA128362AF7FFF400272CC1 /* ClientNotificationsExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FEA128422AF7FFF400272CC1 /* Build configuration list for PBXNativeTarget "ClientNotificationsExtension" */;
+			buildPhases = (
+				FEA128332AF7FFF400272CC1 /* Sources */,
+				FEA128342AF7FFF400272CC1 /* Frameworks */,
+				FEA128352AF7FFF400272CC1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ClientNotificationsExtension;
+			packageProductDependencies = (
+				FEA128432AF8006800272CC1 /* ExtensionThirdPartyLib */,
+			);
+			productName = ClientNotificationsExtension;
+			productReference = FEA128372AF7FFF400272CC1 /* ClientNotificationsExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		FECC6FE82AE2AC4500EAFAE7 /* Desktop */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = FECC6FF52AE2AC4600EAFAE7 /* Build configuration list for PBXNativeTarget "Desktop" */;
@@ -287,6 +355,9 @@
 						CreatedOnToolsVersion = 15.0;
 						TestTargetID = FE1E6CD42AE2AA6500C10AC3;
 					};
+					FEA128362AF7FFF400272CC1 = {
+						CreatedOnToolsVersion = 15.0.1;
+					};
 					FECC6FE82AE2AC4500EAFAE7 = {
 						CreatedOnToolsVersion = 15.0;
 					};
@@ -309,6 +380,7 @@
 				FE1E6CE52AE2AA6600C10AC3 /* ClientTests */,
 				FE1E6CEF2AE2AA6600C10AC3 /* ClientUITests */,
 				FECC6FE82AE2AC4500EAFAE7 /* Desktop */,
+				FEA128362AF7FFF400272CC1 /* ClientNotificationsExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -331,6 +403,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		FE1E6CEE2AE2AA6600C10AC3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FEA128352AF7FFF400272CC1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -375,6 +454,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FEA128332AF7FFF400272CC1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FEA1283A2AF7FFF400272CC1 /* NotificationService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FECC6FE52AE2AC4500EAFAE7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -396,6 +483,11 @@
 			isa = PBXTargetDependency;
 			target = FE1E6CD42AE2AA6500C10AC3 /* Client */;
 			targetProxy = FE1E6CF12AE2AA6600C10AC3 /* PBXContainerItemProxy */;
+		};
+		FEA1283D2AF7FFF400272CC1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FEA128362AF7FFF400272CC1 /* ClientNotificationsExtension */;
+			targetProxy = FEA1283C2AF7FFF400272CC1 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -521,6 +613,7 @@
 		FE1E6CFB2AE2AA6600C10AC3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Client/Client.entitlements;
@@ -561,6 +654,7 @@
 		FE1E6CFC2AE2AA6600C10AC3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Client/Client.entitlements;
@@ -688,6 +782,61 @@
 			};
 			name = Release;
 		};
+		FEA128402AF7FFF400272CC1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = J6252NJ42R;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ClientNotificationsExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ClientNotificationsExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kanstantsin-bucha.examples.example-app.client.ios..Client.ClientNotificationsExtension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		FEA128412AF7FFF400272CC1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = J6252NJ42R;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ClientNotificationsExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ClientNotificationsExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kanstantsin-bucha.examples.example-app.client.ios..Client.ClientNotificationsExtension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		FECC6FF62AE2AC4600EAFAE7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -785,6 +934,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		FEA128422AF7FFF400272CC1 /* Build configuration list for PBXNativeTarget "ClientNotificationsExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FEA128402AF7FFF400272CC1 /* Debug */,
+				FEA128412AF7FFF400272CC1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		FECC6FF52AE2AC4600EAFAE7 /* Build configuration list for PBXNativeTarget "Desktop" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -808,6 +966,10 @@
 		FE9F87822AE2B4F20006B722 /* DesktopThirdPartyLib */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = DesktopThirdPartyLib;
+		};
+		FEA128432AF8006800272CC1 /* ExtensionThirdPartyLib */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ExtensionThirdPartyLib;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

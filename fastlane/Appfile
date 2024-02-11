@@ -1,4 +1,3 @@
-app_identifier(ENV['APP_ID'])
 apple_id(ENV['APPLE_ID'])
 
 itc_team_id(ENV['ITUNES_CONNECT_TEAM_ID'])

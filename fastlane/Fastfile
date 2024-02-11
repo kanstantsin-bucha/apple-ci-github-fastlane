@@ -159,6 +159,7 @@ platform :ios do
   desc "Load provision profiles for iOS production"
   lane :load_provision_profiles_ios_production do
     identifiers = [ios_production_id, ios_production_id + '.NotificationServiceExtension']
+    match(
         type: "appstore",
         include_all_certificates: true,
         readonly: true,

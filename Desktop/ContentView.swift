@@ -19,6 +19,12 @@ struct ContentView: View {
     }
 }
 
-#Preview {
-    ContentView()
+#if DEBUG
+
+struct ContentViewPreview: PreviewProvider {
+    static var previews: ContentView {
+        ContentView()
+    }
 }
+
+#endif

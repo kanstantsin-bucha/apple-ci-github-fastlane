@@ -23,8 +23,8 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/johnpatrickmorgan/NavigationBackport", from: "0.9.0"),
-        .package(url: "https://github.com/getsentry/sentry-cocoa", from: "8.13.0"),
-        .package(url: "https://github.com/OneSignal/OneSignal-iOS-SDK", from: "5.0.2"),
+//        .package(url: "https://github.com/getsentry/sentry-cocoa", from: "8.13.0"),
+//        .package(url: "https://github.com/OneSignal/OneSignal-iOS-SDK", from: "5.0.2"),
 //        .package(url: "https://github.com/RevenueCat/purchases-ios", from: "4.25.10"),
 //        .package(url: "https://github.com/auth0/JWTDecode.swift", from: "3.1.0"),
 //        .package(url: "https://github.com/srgtuszy/keychain-swift", branch: "master"),
@@ -42,9 +42,9 @@ let package = Package(
             name: "ClientThirdPartyTarget",
             dependencies: [
                 "NavigationBackport",
-                .productItem(name: "Sentry", package: "sentry-cocoa", moduleAliases: nil, condition: nil),
-                .productItem(name: "OneSignalFramework", package: "OneSignal-iOS-SDK", moduleAliases: nil, condition: nil),
-                .productItem(name: "OneSignalInAppMessages", package: "OneSignal-iOS-SDK", moduleAliases: nil, condition: nil),
+//                .productItem(name: "Sentry", package: "sentry-cocoa", moduleAliases: nil, condition: nil),
+//                .productItem(name: "OneSignalFramework", package: "OneSignal-iOS-SDK", moduleAliases: nil, condition: nil),
+//                .productItem(name: "OneSignalInAppMessages", package: "OneSignal-iOS-SDK", moduleAliases: nil, condition: nil),
 //                .productItem(name: "RevenueCat", package: "purchases-ios", moduleAliases: nil, condition: nil),
 //                .productItem(name: "JWTDecode", package: "JWTDecode.swift", moduleAliases: nil, condition: nil),
 //                .productItem(name: "KeychainSwift", package: "keychain-swift", moduleAliases: nil, condition: nil),
@@ -58,13 +58,13 @@ let package = Package(
         .target(
             name: "ExtensionThirdPartyTarget",
             dependencies: [
-                .productItem(name: "OneSignalExtension", package: "OneSignal-iOS-SDK", moduleAliases: nil, condition: nil)
+//                .productItem(name: "OneSignalExtension", package: "OneSignal-iOS-SDK", moduleAliases: nil, condition: nil)
             ]
         ),
         .target(
             name: "DesktopThirdPartyTarget",
             dependencies: [
-                .productItem(name: "Sentry", package: "sentry-cocoa", moduleAliases: nil, condition: nil)
+//                .productItem(name: "Sentry", package: "sentry-cocoa", moduleAliases: nil, condition: nil)
             ]
         ),
         .target(

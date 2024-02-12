@@ -32,8 +32,8 @@ let package = Package(
 //        .package(url: "https://github.com/mixpanel/mixpanel-swift", from: "4.1.4"),
 //        .package(url: "https://github.com/AppsFlyerSDK/AppsFlyerFramework", from: "6.12.2"),
 //        .package(url: "https://github.com/aws-amplify/aws-sdk-ios-spm", from: "2.33.4"),
-        .package(url: "https://github.com/Quick/Quick", from: "7.2.0"),
-        .package(url: "https://github.com/Quick/Nimble", from: "12.2.0")
+//        .package(url: "https://github.com/Quick/Quick", from: "7.2.0"),
+//        .package(url: "https://github.com/Quick/Nimble", from: "12.2.0")
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
@@ -70,8 +70,8 @@ let package = Package(
         .target(
             name: "TestsThirdPartyTarget",
             dependencies: [
-                "Quick",
-                "Nimble"
+//                "Quick",
+//                "Nimble"
             ]
         )
     ]

@@ -13,6 +13,7 @@ concurrency:
   
 jobs:
   Run-Tests:
+    permissions: read-all
     name: ${{ github.actor }} Running Tests
     runs-on: macos-13
     timeout-minutes: 30

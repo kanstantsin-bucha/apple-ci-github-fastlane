@@ -1,4 +1,4 @@
-name: client-deploy-staging-to-appstore-connect
+name: client-deploy-staging
 run-name: ${{ github.actor }} Deploying Staging version to AppStore Connect
 on:
   workflow_dispatch:

@@ -1,4 +1,5 @@
-name: client_deploy_testflight_beta_staging
+name: client-deploy-staging-to-appstore-connect
+run-name: ${{ github.actor }} Deploying Staging version to AppStore Connect
 on:
   workflow_dispatch:
   # workflow_run:
@@ -12,8 +13,8 @@ concurrency:
   cancel-in-progress: true
   
 jobs:
-  test:
-    name: Deploy TestFlight Beta build to staging TestFlight
+  Deploy-AppStoreConnect:
+    name: ${{ github.actor }} Deploying build to AppStore Connect 
     runs-on: macOS-13
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     timeout-minutes: 30
@@ -36,7 +37,7 @@ jobs:
           ONESIGNAL_APP_ID: ${{ secrets.ONE_SIGNAL_APP_ID_STAGING }}
           APPSFLYER_DEV_KEY: ${{ secrets.APPSFLYER_DEV_KEY_STAGING }}
           APPLE_APP_ID: ${{ secrets.APPLE_APP_ID_STAGING }}
-      - name: Deploy the Test Flight Beta build to staging TestFlight
+      - name: Deploy Staging
         run: bundle exec fastlane client_deploy_staging_test_flight_beta
         env:
           APPLE_ID: ${{ secrets.APPLE_ID }}

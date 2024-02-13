@@ -1,10 +1,10 @@
 name: desktop_deploy_production
 on:
-  workflow_run:
-    workflows: [run_tests]
-    branches: [develop]
-    types:
-      - completed
+  # workflow_run:
+    # workflows: [run_tests]
+    # branches: [develop]
+    # types:
+      # - completed
 
 jobs:
   test:

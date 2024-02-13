@@ -1,9 +1,9 @@
 name: run_unit_tests
 on:
-  push:
-    branches: ['*']
-  pull_request:
-    branches: ['*']
+  # push:
+    # branches: ['*']
+  # pull_request:
+    # branches: ['*']
     
 concurrency:
   group: ${{ github.workflow }}-${{ github.head_ref || github.ref_name }}

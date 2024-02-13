@@ -21,7 +21,7 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 [bundle exec] fastlane ios client_deploy_production_app_store
 ```
 
-Deploy the App Store build to production TestFlight
+Deploy the App Store build
 
 ### ios client_deploy_production_testflight_beta
 

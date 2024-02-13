@@ -68,6 +68,7 @@
 		FE56A38E2B7C02430032CDF3 /* fastlane */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fastlane; sourceTree = "<group>"; };
 		FE56A38F2B7C026A0032CDF3 /* Scripts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Scripts; sourceTree = "<group>"; };
 		FE56A3902B7C028C0032CDF3 /* workflows */ = {isa = PBXFileReference; lastKnownFileType = folder; name = workflows; path = .github/workflows; sourceTree = "<group>"; };
+		FE56A3912B7C09F70032CDF3 /* TODO.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TODO.md; sourceTree = "<group>"; };
 		FE9F877D2AE2B49F0006B722 /* ClientPackage */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = ClientPackage; sourceTree = "<group>"; };
 		FEA128372AF7FFF400272CC1 /* ClientNotificationsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ClientNotificationsExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEA128392AF7FFF400272CC1 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
@@ -119,6 +120,7 @@
 		FE1E6CCC2AE2AA6500C10AC3 = {
 			isa = PBXGroup;
 			children = (
+				FE56A3912B7C09F70032CDF3 /* TODO.md */,
 				FE56A3902B7C028C0032CDF3 /* workflows */,
 				FE56A38F2B7C026A0032CDF3 /* Scripts */,
 				FE56A38E2B7C02430032CDF3 /* fastlane */,

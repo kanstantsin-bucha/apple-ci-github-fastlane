@@ -1,20 +1,22 @@
-name: tests
-run-name: ${{ github.actor }} Running Tests
+name: client-deploy-staging-beta
+run-name: ${{ github.actor }} Deploying Staging Beta version
 on:
   workflow_dispatch:
-  # push:
-    # branches: ['*']
-  # pull_request:
-    # branches: ['*']
-    
+  # workflow_run:
+    # workflows: [run_tests]
+    # branches: [develop]
+    # types:
+      # - completed
+
 concurrency:
-  group: ${{ github.workflow }}-${{ github.head_ref || github.ref_name }}
+  group: ${{ github.workflow }}
   cancel-in-progress: true
   
 jobs:
-  Run-Tests:
-    name: ${{ github.actor }} Running Tests
-    runs-on: macos-13
+  Deploy-AppStoreConnect:
+    name: ${{ github.actor }} Deploying build to AppStore Connect
+    runs-on: macOS-13
+    # if: ${{ github.event.workflow_run.conclusion == 'success' }}
     timeout-minutes: 30
     steps:
       - name: Select xCode
@@ -23,7 +25,7 @@ jobs:
         uses: actions/checkout@v3
       - name: Install gems
         run: bundle install
-      - name: Write app config
+      - name: Write application config
         run: ./Scripts/CreateAppConfigFromEnv.swift
         env:
           COGNITO_CLIENT_ID: ${{ secrets.COGNITO_CLIENT_ID_STAGING }}
@@ -35,22 +37,17 @@ jobs:
           ONESIGNAL_APP_ID: ${{ secrets.ONE_SIGNAL_APP_ID_STAGING }}
           APPSFLYER_DEV_KEY: ${{ secrets.APPSFLYER_DEV_KEY_STAGING }}
           APPLE_APP_ID: ${{ secrets.APPLE_APP_ID_STAGING }}
-      - name: Run Unit Tests using Fastlane
-        run: bundle exec fastlane run_unit_tests
+      - name: Deploy Staging
+        run: bundle exec fastlane client_deploy_staging_beta
         env:
           APPLE_ID: ${{ secrets.APPLE_ID }}
           APPLE_API_KEY_ID: ${{ secrets.APPLE_API_KEY_ID }}
           APPLE_API_KEY_ISSUER_ID: ${{ secrets.APPLE_API_KEY_ISSUER_ID }}
           APPLE_API_KEY_P8: ${{ secrets.APPLE_API_KEY_P8 }}
-          FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
           MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
           MATCH_GIT_PRIVATE_KEY: ${{ secrets.MATCH_GIT_PRIVATE_KEY }}
           SENTRY_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
           ITUNES_CONNECT_TEAM_ID: ${{ secrets.ITUNES_CONNECT_TEAM_ID }}
           TEAM_ID: ${{ secrets.TEAM_ID }}
-          APP_ID: ${{ vars.APP_ID }}
+          APP_ID: ${{ vars.APP_ID_STAGING }}
           MATCH_GIT_URL: ${{ vars.MATCH_GIT_URL }}
-      - uses: kishikawakatsumi/xcresulttool@v1
-        with:
-          path: reports/ClientStaging.xcresult
-        if: success() || failure()

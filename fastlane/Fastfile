@@ -1,8 +1,7 @@
 default_platform(:ios)
 
 platform :ios do
-  ios_staging_id = 'com.kanstantsin-bucha.examples.example-app.client.ios.staging'
-  ios_production_id = 'com.kanstantsin-bucha.examples.example-app.client.ios'
+  ios_app_id = 'com.kanstantsin-bucha.examples.example-app.client.ios.staging'
   macos_production_id = 'com.kanstantsin-bucha.examples.example-app.client.macos'
   git_user_name = 'kanstantsin-bucha'
   git_user_email = 'kanstantsin.bucha@icloud.com'
@@ -13,7 +12,7 @@ platform :ios do
     match(
         type: "appstore",
         readonly: true,
-        app_identifier: [ios_production_id, ios_production_id + ".NotificationServiceExtension"]
+        app_identifier: [ios_app_id, ios_app_id + ".NotificationServiceExtension"]
     )
     build_app(scheme: "ClientProductionAppStore")
     api_key = app_store_connect_api_key(
@@ -33,14 +32,14 @@ platform :ios do
     )   
   end
 
-  desc "Deploy TestFlight Beta build to production TestFlight"
-  lane :client_deploy_production_testflight_beta do
+  desc "Deploy the production build for testers"
+  lane :client_deploy_production_beta do
     setup_ci
     increment_build_number(build_number: "55555")
     match(
         type: "appstore",
         readonly: true,
-        app_identifier: [ios_staging_id, ios_staging_id + ".NotificationServiceExtension"]
+        app_identifier: [ios_app_id, ios_app_id + ".NotificationServiceExtension"]
     )
     build_app(scheme: "ClientProduction")
     api_key = app_store_connect_api_key(
@@ -60,8 +59,8 @@ platform :ios do
     )   
   end
 
-  desc "Deploy the Test Flight Beta build to staging TestFlight"
-  lane :client_deploy_staging_test_flight_beta do
+  desc "Deploy the staging build for testers"
+  lane :client_deploy_staging_beta do
     setup_ci
     version_increment_patch
     version = lane_context[:project_version]
@@ -71,7 +70,7 @@ platform :ios do
     match(
         type: "appstore",
         readonly: true,
-        app_identifier: [ios_staging_id, ios_staging_id + ".NotificationServiceExtension"]
+        app_identifier: [ios_app_id, ios_app_id + ".NotificationServiceExtension"]
     )
     build_app(scheme: "ClientStaging")
     api_key = app_store_connect_api_key(
@@ -91,8 +90,8 @@ platform :ios do
     )    
   end
 
-  desc "Deploy the Desktop build to production TestFlight"
-  lane :desktop_deploy_production do
+  desc "Deploy the Desktop App Store build"
+  lane :desktop_deploy_appstore do
     setup_ci
     match(
       type: "appstore", 
@@ -122,8 +121,8 @@ platform :ios do
     )
   end
 
-  desc "Run Unit Tests using Fastlane"
-  lane :run_unit_tests do
+  desc "Run Tests using Fastlane"
+  lane :run_tests do
     setup_ci
     match(
       type: "development",

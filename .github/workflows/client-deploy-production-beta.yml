@@ -1,4 +1,4 @@
-name: client_deploy_test_flight_production
+name: client-deploy_test_flight_production
 on:
   workflow_run:
     workflows: [run_tests]

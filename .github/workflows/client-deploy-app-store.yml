@@ -1,4 +1,4 @@
-name: client_deploy_app_store_production
+name: client-deploy-app-store
 on:
   workflow_run:
     workflows: [run_tests]

@@ -1,10 +1,9 @@
-//import Sentry
 import SwiftUI
+import ClientPackageTarget
 
 @main
 struct ClientApp: App {
     var body: some Scene {
-//        let _ = SentrySDK.isEnabled
         WindowGroup {
             ContentView()
         }

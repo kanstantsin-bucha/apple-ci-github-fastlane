@@ -11,7 +11,7 @@ import NavigationBackport
 //import AWSCognitoIdentityProvider
 //import AWSMobileClientXCF
 
-// NavigationBackport
+/// NavigationBackport
 public typealias AppNavigationPath = NBNavigationPath
 public typealias AppNavigationStack = NBNavigationStack
 

@@ -9,17 +9,21 @@ let package = Package(
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
-            name: "ClientThirdPartyLib",
-            targets: ["ClientThirdPartyTarget"]),
+            name: "ClientPackage",
+            targets: ["ClientPackageTarget"]
+        ),
         .library(
             name: "ExtensionThirdPartyLib",
-            targets: ["ExtensionThirdPartyTarget"]),
+            targets: ["ExtensionThirdPartyTarget"]
+        ),
         .library(
             name: "DesktopThirdPartyLib",
-            targets: ["DesktopThirdPartyTarget"]),
+            targets: ["DesktopThirdPartyTarget"]
+        ),
         .library(
             name: "TestsThirdPartyLib",
-            targets: ["TestsThirdPartyTarget"])
+            targets: ["TestsThirdPartyTarget"]
+        )
     ],
     dependencies: [
         .package(url: "https://github.com/johnpatrickmorgan/NavigationBackport", from: "0.9.0"),
@@ -39,23 +43,6 @@ let package = Package(
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "ClientThirdPartyTarget",
-            dependencies: [
-                "NavigationBackport",
-//                .productItem(name: "Sentry", package: "sentry-cocoa", moduleAliases: nil, condition: nil),
-//                .productItem(name: "OneSignalFramework", package: "OneSignal-iOS-SDK", moduleAliases: nil, condition: nil),
-//                .productItem(name: "OneSignalInAppMessages", package: "OneSignal-iOS-SDK", moduleAliases: nil, condition: nil),
-//                .productItem(name: "RevenueCat", package: "purchases-ios", moduleAliases: nil, condition: nil),
-//                .productItem(name: "JWTDecode", package: "JWTDecode.swift", moduleAliases: nil, condition: nil),
-//                .productItem(name: "KeychainSwift", package: "keychain-swift", moduleAliases: nil, condition: nil),
-//                .productItem(name: "SwiftUIIntrospect", package: "swiftui-introspect", moduleAliases: nil, condition: nil),
-//                .productItem(name: "Mixpanel", package: "mixpanel-swift", moduleAliases: nil, condition: nil),
-//                .productItem(name: "AppsFlyerLib", package: "AppsFlyerFramework", moduleAliases: nil, condition: nil),
-//                .productItem(name: "AWSCognitoIdentityProvider", package: "aws-sdk-ios-spm", moduleAliases: nil, condition: nil),
-//                .productItem(name: "AWSMobileClientXCF", package: "aws-sdk-ios-spm", moduleAliases: nil, condition: nil)
-            ]
-        ),
-        .target(
             name: "ExtensionThirdPartyTarget",
             dependencies: [
 //                .productItem(name: "OneSignalExtension", package: "OneSignal-iOS-SDK", moduleAliases: nil, condition: nil)
@@ -72,6 +59,29 @@ let package = Package(
             dependencies: [
 //                "Quick",
 //                "Nimble"
+            ]
+        ),
+        .target(
+            name: "ClientPackageThirdPartyTarget",
+            dependencies: [
+                "NavigationBackport",
+//                .productItem(name: "Sentry", package: "sentry-cocoa", moduleAliases: nil, condition: nil),
+//                .productItem(name: "OneSignalFramework", package: "OneSignal-iOS-SDK", moduleAliases: nil, condition: nil),
+//                .productItem(name: "OneSignalInAppMessages", package: "OneSignal-iOS-SDK", moduleAliases: nil, condition: nil),
+//                .productItem(name: "RevenueCat", package: "purchases-ios", moduleAliases: nil, condition: nil),
+//                .productItem(name: "JWTDecode", package: "JWTDecode.swift", moduleAliases: nil, condition: nil),
+//                .productItem(name: "KeychainSwift", package: "keychain-swift", moduleAliases: nil, condition: nil),
+//                .productItem(name: "SwiftUIIntrospect", package: "swiftui-introspect", moduleAliases: nil, condition: nil),
+//                .productItem(name: "Mixpanel", package: "mixpanel-swift", moduleAliases: nil, condition: nil),
+//                .productItem(name: "AppsFlyerLib", package: "AppsFlyerFramework", moduleAliases: nil, condition: nil),
+//                .productItem(name: "AWSCognitoIdentityProvider", package: "aws-sdk-ios-spm", moduleAliases: nil, condition: nil),
+//                .productItem(name: "AWSMobileClientXCF", package: "aws-sdk-ios-spm", moduleAliases: nil, condition: nil)
+            ]
+        ),
+        .target(
+            name: "ClientPackageTarget",
+            dependencies: [
+                "ClientPackageThirdPartyTarget"
             ]
         )
     ]

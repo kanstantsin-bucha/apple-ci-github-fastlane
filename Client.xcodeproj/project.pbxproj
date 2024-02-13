@@ -65,6 +65,8 @@
 		FE1E6CF42AE2AA6600C10AC3 /* ClientUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientUITests.swift; sourceTree = "<group>"; };
 		FE1E6CF62AE2AA6600C10AC3 /* ClientUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		FE56A3892B7BF5E10032CDF3 /* ClientStaging.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = ClientStaging.xctestplan; sourceTree = "<group>"; };
+		FE56A38B2B7BFDC90032CDF3 /* CreateAppConfigFromEnvDesktop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAppConfigFromEnvDesktop.swift; sourceTree = "<group>"; };
+		FE56A38D2B7BFDC90032CDF3 /* CreateAppConfigFromEnv.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAppConfigFromEnv.swift; sourceTree = "<group>"; };
 		FE9F877D2AE2B49F0006B722 /* ClientPackage */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = ClientPackage; sourceTree = "<group>"; };
 		FEA128372AF7FFF400272CC1 /* ClientNotificationsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ClientNotificationsExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEA128392AF7FFF400272CC1 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 		FE1E6CCC2AE2AA6500C10AC3 = {
 			isa = PBXGroup;
 			children = (
+				FE56A38A2B7BFDC90032CDF3 /* Scripts */,
 				FE56A3892B7BF5E10032CDF3 /* ClientStaging.xctestplan */,
 				FE9F877D2AE2B49F0006B722 /* ClientPackage */,
 				FE1E6CD72AE2AA6500C10AC3 /* Client */,
@@ -173,6 +176,15 @@
 				FE1E6CF62AE2AA6600C10AC3 /* ClientUITestsLaunchTests.swift */,
 			);
 			path = ClientUITests;
+			sourceTree = "<group>";
+		};
+		FE56A38A2B7BFDC90032CDF3 /* Scripts */ = {
+			isa = PBXGroup;
+			children = (
+				FE56A38B2B7BFDC90032CDF3 /* CreateAppConfigFromEnvDesktop.swift */,
+				FE56A38D2B7BFDC90032CDF3 /* CreateAppConfigFromEnv.swift */,
+			);
+			path = Scripts;
 			sourceTree = "<group>";
 		};
 		FEA128382AF7FFF400272CC1 /* ClientNotificationsExtension */ = {

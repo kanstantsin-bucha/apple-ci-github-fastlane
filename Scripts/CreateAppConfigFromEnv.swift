@@ -4,7 +4,7 @@ import Foundation
 
 let environment = ProcessInfo.processInfo.environment
 let fileManager = FileManager.default
-let configPath = "\(fileManager.currentDirectoryPath)/Client/Generated"
+let configPath = "\(fileManager.currentDirectoryPath)/../ClientPackage/Sources/ClientPackageTarget/Generated"
 let path = "\(configPath)/AppConfig.swift"
 
 print("Writing app config to: \(path)")
@@ -87,60 +87,59 @@ extension Property {
 do {
     var properties = [Property]()
     
-    properties.append(.init(
-        name: "cognitoClientId",
-        value: .string(try readConfigValue(for: "COGNITO_CLIENT_ID")),
-        descriptions: ["AWS cognito client id"])
-    )
-
-    properties.append(.init(
-        name: "cognitoPoolId",
-        value: .string(try readConfigValue(for: "COGNITO_POOL_ID")),
-        descriptions: ["AWS cognito user pool id"])
-    )
-    
-    properties.append(.init(
-        name: "cognitoRegionId",
-        value: .string(try readConfigValue(for: "COGNITO_REGION_ID")),
-        descriptions: ["AWS cognito region id for the given `cognitoPoolId`"])
-    )
-
-    properties.append(.init(
-        name: "sentryDsn",
-        value: .string(try readConfigValue(for: "SENTRY_DSN")),
-        descriptions: ["Used to configure sentry sdk"])
-    )
-    
-    properties.append(.init(
-        name: "mixpanelAccessToken",
-        value: .string(try readConfigValue(for: "MIXPANEL_TOKEN")),
-        descriptions: ["Mixpanel Analytics access token"])
-    )
-    
-    properties.append(.init(
-        name: "revenueCatApiKey",
-        value: .string(try readConfigValue(for: "REVENUE_CAT_KEY")),
-        descriptions: ["RevenueCat Public SDK Key"])
-    )
-    
-    properties.append(.init(
-        name: "oneSignalAppId",
-        value: .string(try readConfigValue(for: "ONESIGNAL_APP_ID")),
-        descriptions: ["OneSignal App ID"])
-    )
-    
-    properties.append(.init(
-        name: "appsflyerDevKey",
-        value: .string(try readConfigValue(for: "APPSFLYER_DEV_KEY")),
-        descriptions: ["AppsFlyer Development Key"])
-    )
-    
-    properties.append(.init(
-        name: "appID",
-        value: .string(try readConfigValue(for: "APPLE_APP_ID")),
-        descriptions: ["App ID of current app, accessible from AppStore Connect"])
-    )
-    
+//    properties.append(.init(
+//        name: "cognitoClientId",
+//        value: .string(try readConfigValue(for: "COGNITO_CLIENT_ID")),
+//        descriptions: ["AWS cognito client id"])
+//    )
+//
+//    properties.append(.init(
+//        name: "cognitoPoolId",
+//        value: .string(try readConfigValue(for: "COGNITO_POOL_ID")),
+//        descriptions: ["AWS cognito user pool id"])
+//    )
+//    
+//    properties.append(.init(
+//        name: "cognitoRegionId",
+//        value: .string(try readConfigValue(for: "COGNITO_REGION_ID")),
+//        descriptions: ["AWS cognito region id for the given `cognitoPoolId`"])
+//    )
+//
+//    properties.append(.init(
+//        name: "sentryDsn",
+//        value: .string(try readConfigValue(for: "SENTRY_DSN")),
+//        descriptions: ["Used to configure sentry sdk"])
+//    )
+//    
+//    properties.append(.init(
+//        name: "mixpanelAccessToken",
+//        value: .string(try readConfigValue(for: "MIXPANEL_TOKEN")),
+//        descriptions: ["Mixpanel Analytics access token"])
+//    )
+//    
+//    properties.append(.init(
+//        name: "revenueCatApiKey",
+//        value: .string(try readConfigValue(for: "REVENUE_CAT_KEY")),
+//        descriptions: ["RevenueCat Public SDK Key"])
+//    )
+//    
+//    properties.append(.init(
+//        name: "oneSignalAppId",
+//        value: .string(try readConfigValue(for: "ONESIGNAL_APP_ID")),
+//        descriptions: ["OneSignal App ID"])
+//    )
+//    
+//    properties.append(.init(
+//        name: "appsflyerDevKey",
+//        value: .string(try readConfigValue(for: "APPSFLYER_DEV_KEY")),
+//        descriptions: ["AppsFlyer Development Key"])
+//    )
+//    
+//    properties.append(.init(
+//        name: "appID",
+//        value: .string(try readConfigValue(for: "APPLE_APP_ID")),
+//        descriptions: ["App ID of current app, accessible from AppStore Connect"])
+//    )
     
     let config = AppConfigDescription(name: "AppConfig", properties: properties)
 

@@ -15,5 +15,4 @@ xcuserdata/
 .DS_Store
 
 # Configs
-Client/Config/AppConfig.swift
-ClientUITests/TestsConfig.swift
+ClientPackage/Sources/ClientPackageTarget/Generated/AppConfig.swift

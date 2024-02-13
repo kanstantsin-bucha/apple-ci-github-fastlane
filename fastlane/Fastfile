@@ -7,7 +7,7 @@ platform :ios do
   git_user_name = 'kanstantsin-bucha'
   git_user_email = 'kanstantsin.bucha@icloud.com'
 
-  desc "Deploy the App Store build to production TestFlight"
+  desc "Deploy the App Store build"
   lane :client_deploy_production_app_store do
     setup_ci
     match(

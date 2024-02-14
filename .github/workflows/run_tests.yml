@@ -1,4 +1,4 @@
-name: tests
+name: run-tests
 run-name: ${{ github.actor }} Running Tests
 on:
   workflow_dispatch:

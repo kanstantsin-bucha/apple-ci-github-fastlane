@@ -23,37 +23,37 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 Deploy the App Store build
 
-### ios client_deploy_production_testflight_beta
+### ios client_deploy_production_beta
 
 ```sh
-[bundle exec] fastlane ios client_deploy_production_testflight_beta
+[bundle exec] fastlane ios client_deploy_production_beta
 ```
 
-Deploy TestFlight Beta build to production TestFlight
+Deploy the production build for testers
 
-### ios client_deploy_staging_test_flight_beta
+### ios client_deploy_staging_beta
 
 ```sh
-[bundle exec] fastlane ios client_deploy_staging_test_flight_beta
+[bundle exec] fastlane ios client_deploy_staging_beta
 ```
 
-Deploy the Test Flight Beta build to staging TestFlight
+Deploy the staging build for testers
 
-### ios desktop_deploy_production
+### ios desktop_deploy_appstore
 
 ```sh
-[bundle exec] fastlane ios desktop_deploy_production
+[bundle exec] fastlane ios desktop_deploy_appstore
 ```
 
-Deploy the Desktop build to production TestFlight
+Deploy the Desktop App Store build
 
-### ios run_unit_tests
+### ios run_tests
 
 ```sh
-[bundle exec] fastlane ios run_unit_tests
+[bundle exec] fastlane ios run_tests
 ```
 
-Run Unit Tests using Fastlane
+Run Tests using Fastlane
 
 ### ios load_provision_profiles_ios_staging
 

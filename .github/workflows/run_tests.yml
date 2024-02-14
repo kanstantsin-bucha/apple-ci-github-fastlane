@@ -37,7 +37,7 @@ jobs:
           APPSFLYER_DEV_KEY: ${{ secrets.APPSFLYER_DEV_KEY_STAGING }}
           APPLE_APP_ID: ${{ secrets.APPLE_APP_ID_STAGING }}
       - name: Run Unit Tests using Fastlane
-        run: bundle exec fastlane run_tests
+        run: bundle exec fastlane run_all_tests
         env:
           APPLE_ID: ${{ secrets.APPLE_ID }}
           APPLE_API_KEY_ID: ${{ secrets.APPLE_API_KEY_ID }}

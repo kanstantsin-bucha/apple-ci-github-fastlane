@@ -127,7 +127,7 @@ platform :ios do
     match(
       type: "development",
        readonly: true,
-       app_identifier: [ios_staging_id, ios_staging_id + ".NotificationServiceExtension"]
+       app_identifier: [ios_app_id, ios_app_id + ".NotificationServiceExtension"]
       )
     run_tests(
       scheme: "ClientStaging",
@@ -141,7 +141,7 @@ platform :ios do
 
   desc "Load provision profiles for iOS staging"
   lane :load_provision_profiles_ios_staging do
-    identifiers = [ios_staging_id, ios_staging_id + '.NotificationServiceExtension']
+    identifiers = [ios_app_id, ios_app_id + '.NotificationServiceExtension']
     match(
         type: "appstore",
         include_all_certificates: true,
@@ -149,7 +149,7 @@ platform :ios do
         app_identifier: identifiers,
         verbose: true
     )
-    # identifiers << ios_staging_id + '.ClientUITests'
+    # identifiers << ios_app_id + '.ClientUITests'
     match(
         type: "development",
         include_all_certificates: true,
@@ -182,7 +182,7 @@ platform :ios do
   lane :create_provision_profiles_ios_staging do
     login_another_user
     user_name = lane_context[:user_name]
-    identifiers = [ios_staging_id, ios_staging_id + '.NotificationServiceExtension']
+    identifiers = [ios_app_id, ios_app_id + '.NotificationServiceExtension']
     match(
         type: "appstore",
         username: user_name,
@@ -191,7 +191,7 @@ platform :ios do
         app_identifier: identifiers,
         verbose: true
     )
-    # identifiers << ios_staging_id + '.ClientUITests'
+    # identifiers << ios_app_id + '.ClientUITests'
     match(
         type: "development",
         username: user_name,

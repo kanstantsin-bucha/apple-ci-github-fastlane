@@ -1,4 +1,5 @@
-name: desktop_deploy_production
+name: desktop-deploy-production
+run-name: ${{ github.actor }} Deploying Desktop Production 
 on:
   # workflow_run:
     # workflows: [run_tests]
